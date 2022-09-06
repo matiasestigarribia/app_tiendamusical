@@ -17,13 +17,45 @@ var_valor = StringVar()
 
 # mi_id = Label(maintienda, text="ID") #para agregar entry para ID o futuro display
 # mi_id.grid(row=0, column=0, sticky=W)
-artista = Label(maintienda, text="Artista")
+artista = Label(
+    maintienda,
+    text="Artista",
+    borderwidth=2,
+    relief="groove",
+    foreground="white",
+    background="#4f5afd",
+    width=10,
+)
 artista.grid(row=1, column=0, sticky=W)
-album = Label(maintienda, text="Album")
+album = Label(
+    maintienda,
+    text="Album",
+    borderwidth=2,
+    relief="groove",
+    foreground="white",
+    background="#4f5afd",
+    width=10,
+)
 album.grid(row=2, column=0, sticky=W)
-unidades = Label(maintienda, text="Unidades")
+unidades = Label(
+    maintienda,
+    text="Unidades",
+    borderwidth=2,
+    relief="groove",
+    foreground="white",
+    background="#4f5afd",
+    width=10,
+)
 unidades.grid(row=3, column=0, sticky=W)
-valor = Label(maintienda, text="Valor")
+valor = Label(
+    maintienda,
+    text="Valor",
+    borderwidth=2,
+    relief="groove",
+    foreground="white",
+    background="#4f5afd",
+    width=10,
+)
 valor.grid(row=4, column=0, sticky=W)
 
 #########################
