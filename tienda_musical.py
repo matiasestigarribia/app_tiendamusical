@@ -4,7 +4,7 @@ from tkinter import ttk
 mi_id = 0
 
 maintienda = Tk()
-maintienda.config(bg="#6666E6")
+maintienda.config(bg="#494C59")
 maintienda.resizable(width=300, height=200)
 
 var_artista = StringVar()
@@ -23,7 +23,7 @@ artista = Label(
     borderwidth=2,
     relief="groove",
     foreground="white",
-    background="#4f5afd",
+    background="#6666E6",
     width=10,
 )
 artista.grid(row=1, column=0, sticky=W)
@@ -33,7 +33,7 @@ album = Label(
     borderwidth=2,
     relief="groove",
     foreground="white",
-    background="#4f5afd",
+    background="#6666E6",
     width=10,
 )
 album.grid(row=2, column=0, sticky=W)
@@ -43,7 +43,7 @@ unidades = Label(
     borderwidth=2,
     relief="groove",
     foreground="white",
-    background="#4f5afd",
+    background="#6666E6",
     width=10,
 )
 unidades.grid(row=3, column=0, sticky=W)
@@ -53,20 +53,44 @@ valor = Label(
     borderwidth=2,
     relief="groove",
     foreground="white",
-    background="#4f5afd",
+    background="#6666E6",
     width=10,
 )
 valor.grid(row=4, column=0, sticky=W)
 
 #########################
 # campos de entrada
-entry_artista = Entry(maintienda, textvariable=var_artista, width=35)
+entry_artista = Entry(
+    maintienda,
+    textvariable=var_artista,
+    width=35,
+    background="#8B9DC3",
+    foreground="white",
+)
 entry_artista.grid(row=1, column=1)
-entry_album = Entry(maintienda, textvariable=var_album, width=35)
+entry_album = Entry(
+    maintienda,
+    textvariable=var_album,
+    width=35,
+    background="#8B9DC3",
+    foreground="white",
+)
 entry_album.grid(row=2, column=1)
-entry_unidades = Entry(maintienda, textvariable=var_unidades, width=35)
+entry_unidades = Entry(
+    maintienda,
+    textvariable=var_unidades,
+    width=35,
+    background="#8B9DC3",
+    foreground="white",
+)
 entry_unidades.grid(row=3, column=1)
-entry_valor = Entry(maintienda, textvariable=var_valor, width=35)
+entry_valor = Entry(
+    maintienda,
+    textvariable=var_valor,
+    width=35,
+    background="#8B9DC3",
+    foreground="white",
+)
 entry_valor.grid(row=4, column=1)
 
 
@@ -124,14 +148,47 @@ tree.grid(column=0, row=7, columnspan=4)
 
 ########################
 # botones
-boton_g = Button(maintienda, text="Agregar", command=funcion_alta)
+boton_g = Button(
+    maintienda,
+    text="Agregar",
+    command=funcion_alta,
+    borderwidth=2,
+    relief="groove",
+    foreground="white",
+    background="#6666E6",
+)
 boton_g.grid(row=6, column=0)
-boton_e = Button(maintienda, text="Eliminar", command=funcion_baja)
+boton_e = Button(
+    maintienda,
+    text="Eliminar",
+    command=funcion_baja,
+    borderwidth=2,
+    relief="groove",
+    foreground="white",
+    background="#6666E6",
+)
 boton_e.grid(row=6, column=1)
-boton_m = Button(maintienda, text="Modificacion", command=funcion_modificar)
+boton_m = Button(
+    maintienda,
+    text="Modificacion",
+    command=funcion_modificar,
+    borderwidth=2,
+    relief="groove",
+    foreground="white",
+    background="#6666E6",
+)
 boton_m.grid(row=6, column=2)
-boton_v = Button(maintienda, text="Ver", command=funcion_listar)
+boton_v = Button(
+    maintienda,
+    text="Ver",
+    command=funcion_listar,
+    borderwidth=2,
+    relief="groove",
+    foreground="white",
+    background="#6666E6",
+)
 boton_v.grid(row=6, column=3)
 
 
 maintienda.mainloop()
+
