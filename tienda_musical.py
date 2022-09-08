@@ -5,6 +5,7 @@ mi_id = 0
 
 maintienda = Tk()
 maintienda.config(bg="#494C59")
+maintienda.title('Tienda de música')
 maintienda.resizable(width=300, height=200)
 
 var_artista = StringVar()
