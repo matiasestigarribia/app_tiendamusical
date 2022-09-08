@@ -139,10 +139,15 @@ def funcion_listar():
 tree = ttk.Treeview(maintienda)
 tree["columns"] = ("col1", "col2", "col3", "col4")
 tree.column("#0", minwidth=50, anchor=W)
+tree.heading("#0", text="ID")
 tree.column("col1", minwidth=60, anchor=W)
+tree.heading("col1", text="Artista")
 tree.column("col2", minwidth=60, anchor=W)
+tree.heading("col2", text="Album")
 tree.column("col3", minwidth=20, anchor=W)
+tree.heading("col3", text="Unidades")
 tree.column("col4", minwidth=30, anchor=W)
+tree.heading("col4", text="Valor")
 
 tree.grid(column=0, row=7, columnspan=4)
 
