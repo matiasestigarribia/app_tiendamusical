@@ -5,7 +5,7 @@ from tkinter import ttk
 import re
 
 ####################
-
+# MODELO
 
 def conexion():
     con = sqlite3.connect("mibase.db")
@@ -107,11 +107,16 @@ def modificar(artista, album, unidades, valor, tree):
 
 
 ####################
+# VISTA
 
 maintienda = Tk()
 maintienda.config(bg="#494C59")
 maintienda.title("Tienda de música")
 maintienda.resizable(width=300, height=200)
+
+
+titulo = Label(maintienda, text="Hola! Ingrese artista, album, unidades y valor del producto", bg="DarkSlateBlue", fg="thistle1", height=1, width=60)
+titulo.grid(row=0, column=0, columnspan=4, padx=1, pady=1, sticky=W+E)
 
 var_artista, var_album, var_unidades, var_valor = (
     StringVar(),
@@ -162,7 +167,7 @@ valor = Label(
 valor.grid(row=4, column=0, sticky=W)
 
 ####################
-
+# entry
 entry_artista = Entry(
     maintienda,
     textvariable=var_artista,
@@ -197,7 +202,7 @@ entry_valor = Entry(
 entry_valor.grid(row=4, column=1)
 
 ####################
-
+# tree
 tree = ttk.Treeview(maintienda)
 tree["columns"] = ("col1", "col2", "col3", "col4")
 tree.column("#0", minwidth=50, anchor=W)
@@ -214,7 +219,7 @@ tree.heading("col4", text="Valor")
 tree.grid(column=0, row=7, columnspan=4)
 
 ####################
-
+# buttons
 boton_g = Button(
     maintienda,
     text="Agregar",
