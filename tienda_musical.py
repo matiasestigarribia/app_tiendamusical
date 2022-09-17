@@ -1,23 +1,125 @@
 from tkinter import *
+from tkinter.messagebox import *
+import sqlite3
 from tkinter import ttk
+import re
 
-mi_id = 0
+####################
+
+
+def conexion():
+    con = sqlite3.connect("mibase.db")
+    return con
+
+
+def crear_tabla():
+    con = conexion()
+    cursor = con.cursor()
+    sql = """CREATE TABLE discografica
+             (id INTEGER PRIMARY KEY AUTOINCREMENT,
+             artista varchar(50) NOT NULL,
+             album varchar(50) NOT NULL,
+             unidades real,
+             valor real)
+    """
+    cursor.execute(sql)
+    con.commit()
+
+
+try:
+    conexion()
+    crear_tabla()
+except:
+    print("Hay un error")
+
+
+def alta(artista, album, unidades, valor, tree):
+    cadena = artista
+    patron = "^[A-Za-záéíóú]*$"
+    if re.match(patron, cadena):
+        print(artista, album, unidades, valor)
+        con = conexion()
+        cursor = con.cursor()
+        data = (artista, album, unidades, valor)
+        sql = "INSERT INTO discografica(artista, album, unidades, valor) VALUES(?, ?, ?, ?)"
+        cursor.execute(sql, data)
+        con.commit()
+        seleccion(tree)
+    else:
+        print("Error")
+
+
+def consulta():
+    global mi_id
+    item = tree.focus()
+    print(item)
+
+
+def baja(tree):
+    valores = tree.selection()
+    print(valores)
+    item = tree.item(valores)
+    print(item)
+    print(item["text"])
+    mi_id = item["text"]
+
+    con = conexion()
+    cursor = con.cursor()
+    data = (mi_id,)
+    sql = "DELETE FROM discografica WHERE id = ?;"
+    cursor.execute(sql, data)
+    con.commit()
+    tree.delete(valores)
+
+
+def seleccion(mitreview):
+    records = mitreview.get_children()
+    for element in records:
+        mitreview.delete(element)
+
+    sql = "SELECT * FROM discografica ORDER BY id ASC"
+    con = conexion()
+    cursor = con.cursor()
+    datos = cursor.execute(sql)
+
+    resultado = datos.fetchall()
+    for fila in resultado:
+        print(fila)
+        mitreview.insert(
+            "", 0, text=fila[0], values=(fila[1], fila[2], fila[3], fila[4])
+        )
+
+
+def modificar(artista, album, unidades, valor, tree):
+    valores = tree.selection()
+    print(valores)
+    item = tree.item(valores)
+    print(item)
+    print(item["text"])
+    mi_id = item["text"]
+    data = (artista, album, unidades, valor, mi_id)
+    sql = "UPDATE discografica SET artista = ?, album = ?, unidades = ?, valor = ? WHERE id = ?"
+    con = conexion()
+    cursor = con.cursor()
+    cursor.execute(sql, data)
+    con.commit()
+    seleccion(tree)
+
+
+####################
 
 maintienda = Tk()
 maintienda.config(bg="#494C59")
-maintienda.title('Tienda de música')
+maintienda.title("Tienda de música")
 maintienda.resizable(width=300, height=200)
 
-var_artista = StringVar()
-var_album = StringVar()
-var_unidades = StringVar()
-var_valor = StringVar()
+var_artista, var_album, var_unidades, var_valor = (
+    StringVar(),
+    StringVar(),
+    DoubleVar(),
+    DoubleVar(),
+)
 
-#########################
-# labels
-
-# mi_id = Label(maintienda, text="ID") #para agregar entry para ID o futuro display
-# mi_id.grid(row=0, column=0, sticky=W)
 artista = Label(
     maintienda,
     text="Artista",
@@ -59,8 +161,8 @@ valor = Label(
 )
 valor.grid(row=4, column=0, sticky=W)
 
-#########################
-# campos de entrada
+####################
+
 entry_artista = Entry(
     maintienda,
     textvariable=var_artista,
@@ -94,48 +196,7 @@ entry_valor = Entry(
 )
 entry_valor.grid(row=4, column=1)
 
-
-#########################
-# funciones botones
-
-
-def funcion_alta():
-    global mi_id
-    mi_id += 1
-    tree.insert(
-        "",
-        "end",
-        text=str(mi_id),
-        values=(
-            var_artista.get(),
-            var_album.get(),
-            var_unidades.get(),
-            var_valor.get(),
-        ),
-    )
-
-
-def funcion_baja():
-    global mi_id
-    item = tree.focus()  # busca un valor determinado
-    print(item)
-    tree.delete(item)
-    mi_id -= 1
-
-
-def funcion_modificar():
-    global mi_id
-    item = tree.focus()  # busca un valor determinado, falta desarrollo de modificar
-    print(item)
-    tree.delete(item)
-    mi_id -= 1
-
-
-def funcion_listar():
-    global mi_id
-    item = tree.focus()
-    print(item)
-
+####################
 
 tree = ttk.Treeview(maintienda)
 tree["columns"] = ("col1", "col2", "col3", "col4")
@@ -152,12 +213,14 @@ tree.heading("col4", text="Valor")
 
 tree.grid(column=0, row=7, columnspan=4)
 
-########################
-# botones
+####################
+
 boton_g = Button(
     maintienda,
     text="Agregar",
-    command=funcion_alta,
+    command=lambda: alta(
+        var_artista.get(), var_album.get(), var_unidades.get(), var_valor.get(), tree
+    ),
     borderwidth=2,
     relief="groove",
     foreground="white",
@@ -167,7 +230,7 @@ boton_g.grid(row=6, column=0)
 boton_e = Button(
     maintienda,
     text="Eliminar",
-    command=funcion_baja,
+    command=lambda: baja(tree),
     borderwidth=2,
     relief="groove",
     foreground="white",
@@ -177,7 +240,9 @@ boton_e.grid(row=6, column=1)
 boton_m = Button(
     maintienda,
     text="Modificacion",
-    command=funcion_modificar,
+    command=lambda: modificar(
+        var_artista.get(), var_album.get(), var_unidades.get(), var_valor.get(), tree
+    ),
     borderwidth=2,
     relief="groove",
     foreground="white",
@@ -187,7 +252,7 @@ boton_m.grid(row=6, column=2)
 boton_v = Button(
     maintienda,
     text="Ver",
-    command=funcion_listar,
+    command=lambda: consulta(),
     borderwidth=2,
     relief="groove",
     foreground="white",
@@ -195,6 +260,4 @@ boton_v = Button(
 )
 boton_v.grid(row=6, column=3)
 
-
 maintienda.mainloop()
-
