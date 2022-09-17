@@ -30,7 +30,7 @@ try:
     conexion()
     crear_tabla()
 except:
-    print("Hay un error")
+    print("Enhorabuena, usted tiene acceso a la Base de Datos de la Disquería")
 
 
 def alta(artista, album, unidades, valor, tree):
