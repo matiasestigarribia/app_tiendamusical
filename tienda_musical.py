@@ -110,7 +110,7 @@ def modificar(artista, album, unidades, valor, tree):
 
 def funciontxt():
     datalist = []
-    archivo = open("basemusica.db", "r", encoding="unicode_escape")
+    archivo = open("mibase.db", "r", encoding="unicode_escape")
     archivo.seek(0)
     for x in archivo:
         datalist.append(x)
@@ -126,7 +126,7 @@ def funciontxt():
 
 def funciondiccionario():
     datadiccio = []
-    archivo = open("basemusica.db", "r", encoding="unicode_escape")
+    archivo = open("mibase.db", "r", encoding="unicode_escape")
     archivo.seek(0)
     for x in archivo:
         datadiccio.append(x)
