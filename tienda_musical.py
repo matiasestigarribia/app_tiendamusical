@@ -149,8 +149,8 @@ titulo.grid(row=0, column=0, columnspan=4, padx=1, pady=1, sticky=W+E)
 var_artista, var_album, var_unidades, var_valor = (
     StringVar(),
     StringVar(),
-    DoubleVar(),
-    DoubleVar(),
+    IntleVar(),
+    IntVar(),
 )
 
 artista = Label(
