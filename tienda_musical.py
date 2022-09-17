@@ -105,6 +105,34 @@ def modificar(artista, album, unidades, valor, tree):
     con.commit()
     seleccion(tree)
 
+#######################
+# GUARDAR EN TXT
+
+def funciontxt():
+    datalist = []
+    archivo = open("basemusica.db", "r", encoding="unicode_escape")
+    archivo.seek(0)
+    for x in archivo:
+        datalist.append(x)
+        datastring = ""
+        for item in datalist:
+            datastring += item
+    archivo = open("disqueria.txt", "w")
+    archivo.write(datastring)
+    archivo.close()
+
+#######################
+# IMPRIMIR DICCIONARIO
+
+def funciondiccionario():
+    datadiccio = []
+    archivo = open("basemusica.db", "r", encoding="unicode_escape")
+    archivo.seek(0)
+    for x in archivo:
+        datadiccio.append(x)
+        for y in datadiccio:
+            print(y)
+
 
 ####################
 # VISTA
@@ -216,7 +244,7 @@ tree.heading("col3", text="Unidades")
 tree.column("col4", minwidth=30, anchor=W)
 tree.heading("col4", text="Valor")
 
-tree.grid(column=0, row=7, columnspan=4)
+tree.grid(column=0, row=10, columnspan=4)
 
 ####################
 # buttons
@@ -264,5 +292,27 @@ boton_v = Button(
     background="#6666E6",
 )
 boton_v.grid(row=6, column=3)
+
+boton_txt = Button(
+    maintienda, 
+    text="Guardar en txt", 
+    command=lambda:funciontxt(),
+    borderwidth=2,
+    relief="groove",
+    foreground="white",
+    background="#6666E6",
+)
+boton_txt.grid(row=6, column=4)
+
+boton_dicc = Button(
+    maintienda, 
+    text="Imprimir como diccionario", 
+    command=lambda:funciondiccionario(),
+    borderwidth=2,
+    relief="groove",
+    foreground="white",
+    background="#6666E6",
+)
+boton_dicc.grid(row=6, column=5)
 
 maintienda.mainloop()
