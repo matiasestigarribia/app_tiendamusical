@@ -19,8 +19,8 @@ def crear_tabla():
              (id INTEGER PRIMARY KEY AUTOINCREMENT,
              artista varchar(50) NOT NULL,
              album varchar(50) NOT NULL,
-             unidades real,
-             valor real)
+             unidades varchar(20) NOT NULL,
+             valor varchar (20) NOT TULL)
     """
     cursor.execute(sql)
     con.commit()
