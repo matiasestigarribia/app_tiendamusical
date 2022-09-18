@@ -7,6 +7,7 @@ import re
 ####################
 # MODELO
 
+
 def conexion():
     con = sqlite3.connect("mibase.db")
     return con
@@ -20,8 +21,8 @@ def crear_tabla():
              artista varchar(50) NOT NULL,
              album varchar(50) NOT NULL,
              unidades varchar(20) NOT NULL,
-             valor varchar (20) NOT TULL)
-    """
+             valor varchar(20) NOT NULL
+             )"""
     cursor.execute(sql)
     con.commit()
 
@@ -41,7 +42,7 @@ def alta(artista, album, unidades, valor, tree):
         con = conexion()
         cursor = con.cursor()
         data = (artista, album, unidades, valor)
-        sql = "INSERT INTO discografica(artista, album, unidades, valor) VALUES(?, ?, ?, ?)"
+        sql = "INSERT INTO discografica(artista, album, unidades, valor) VALUES(?, ?, ?, ?);"
         cursor.execute(sql, data)
         con.commit()
         seleccion(tree)
@@ -105,8 +106,10 @@ def modificar(artista, album, unidades, valor, tree):
     con.commit()
     seleccion(tree)
 
+
 #######################
 # GUARDAR EN TXT
+
 
 def funciontxt():
     datalist = []
@@ -121,8 +124,10 @@ def funciontxt():
     archivo.write(datastring)
     archivo.close()
 
+
 #######################
 # IMPRIMIR DICCIONARIO
+
 
 def funciondiccionario():
     datadiccio = []
@@ -143,13 +148,20 @@ maintienda.title("Tienda de música")
 maintienda.resizable(width=300, height=200)
 
 
-titulo = Label(maintienda, text="Hola! Ingrese artista, album, unidades y valor del producto", bg="DarkSlateBlue", fg="thistle1", height=1, width=60)
-titulo.grid(row=0, column=0, columnspan=4, padx=1, pady=1, sticky=W+E)
+titulo = Label(
+    maintienda,
+    text="Hola! Ingrese artista, album, unidades y valor del producto",
+    bg="DarkSlateBlue",
+    fg="thistle1",
+    height=1,
+    width=60,
+)
+titulo.grid(row=0, column=0, columnspan=4, padx=1, pady=1, sticky=W + E)
 
 var_artista, var_album, var_unidades, var_valor = (
     StringVar(),
     StringVar(),
-    IntleVar(),
+    IntVar(),
     IntVar(),
 )
 
@@ -294,9 +306,9 @@ boton_v = Button(
 boton_v.grid(row=6, column=3)
 
 boton_txt = Button(
-    maintienda, 
-    text="Guardar en txt", 
-    command=lambda:funciontxt(),
+    maintienda,
+    text="Guardar en txt",
+    command=lambda: funciontxt(),
     borderwidth=2,
     relief="groove",
     foreground="white",
@@ -305,9 +317,9 @@ boton_txt = Button(
 boton_txt.grid(row=6, column=4)
 
 boton_dicc = Button(
-    maintienda, 
-    text="Imprimir como diccionario", 
-    command=lambda:funciondiccionario(),
+    maintienda,
+    text="Imprimir como diccionario",
+    command=lambda: funciondiccionario(),
     borderwidth=2,
     relief="groove",
     foreground="white",
