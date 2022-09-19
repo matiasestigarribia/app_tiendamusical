@@ -40,7 +40,7 @@ except:
 
 def alta(artista, album, unidades, valor, tree):
     cadena = artista
-    patron = "[a-zA-Záéíóú 0-9]+"
+    patron = "[a-zA-Záéíóú 0-9 \s]+"
     if re.match(patron, cadena):
         print(artista, album, unidades, valor)
         con = conexion()
