@@ -50,31 +50,18 @@ def alta(artista, album, unidades, valor, tree):
         cursor.execute(sql, data)
         con.commit()
         print("Estoy en alta todo ok")
-        actualizar_treeview(tree)
         seleccion(tree)
     else:
         print("Error en campo Artista")
 
-def actualizar_treeview(mitreeview):
-    records = mitreeview.get_children()
-    for element in records:
-        mitreeview.delete(element)
-
-    sql = "SELECT * FROM discografica ORDER BY id ASC"
-    con=conexion()
-    cursor=con.cursor()
-    datos=cursor.execute(sql)
-
-    resultado = datos.fetchall()
-    for fila in resultado:
-        print(fila)
-        mitreeview.insert("", 0, text=fila[0], values=(fila[1], fila[2], fila[3]))
 
 
-def consulta():
+"""def consulta():
     global mi_id
     item = tree.focus()
-    print(item)
+    print(item)"""
+def consulta(tree):
+    seleccion(tree)
 
 
 def baja(tree):
@@ -92,7 +79,7 @@ def baja(tree):
     cursor.execute(sql, data)
     con.commit()
     print("Item dado de baja")
-    actualizar_treeview(tree)
+    seleccion(tree)
     tree.delete(valor)
     tree.delete(valores)
 
@@ -321,7 +308,7 @@ boton_m.grid(row=6, column=2)
 boton_v = Button(
     maintienda,
     text="Ver",
-    command=lambda: consulta(),
+    command=lambda: consulta(tree),
     borderwidth=2,
     relief="groove",
     foreground="white",
