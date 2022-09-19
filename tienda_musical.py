@@ -46,7 +46,7 @@ def alta(artista, album, unidades, valor, tree):
         con = conexion()
         cursor = con.cursor()
         data = (artista, album, unidades, valor)
-        sql = "INSERT INTO discografica(artista, album, unidades, valor) VALUES(?, ?, ?, ?);"
+        sql = "INSERT INTO discografica(artista, album, unidades, valor) VALUES(?, ?, ?, ?)"
         cursor.execute(sql, data)
         con.commit()
         print("Estoy en alta todo ok")
@@ -75,7 +75,7 @@ def baja(tree):
     con = conexion()
     cursor = con.cursor()
     data = (mi_id,)
-    sql = "DELETE FROM discografica WHERE id = ?;"
+    sql = "DELETE FROM discografica WHERE id = ?"
     cursor.execute(sql, data)
     con.commit()
     print("Item dado de baja")
