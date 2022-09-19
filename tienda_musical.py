@@ -7,6 +7,10 @@ import re
 ####################
 # MODELO
 
+def crear_base():
+    con = sqlite3.connect("mibase.db")
+    con.close()
+    return con
 
 def conexion():
     con = sqlite3.connect("mibase.db")
