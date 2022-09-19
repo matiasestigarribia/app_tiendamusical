@@ -40,7 +40,7 @@ except:
 
 def alta(artista, album, unidades, valor, tree):
     cadena = artista
-    patron = "[a-zA-Záéíóú 0-9 \s]+"
+    patron = "[a-zA-Záéíóú 0-9 \s]+" #regex que valida campo de entrada artistas tolerando varios espacios, entre caracteres alfanúmericos
     if re.match(patron, cadena):
         print(artista, album, unidades, valor)
         con = conexion()
