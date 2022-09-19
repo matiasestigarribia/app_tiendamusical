@@ -60,7 +60,7 @@ def actualizar_treeview(mitreeview):
     for element in records:
         mitreeview.delete(element)
 
-    sql = "SELECT * FROM musica ORDER BY id ASC"
+    sql = "SELECT * FROM discografica ORDER BY id ASC"
     con=conexion()
     cursor=con.cursor()
     datos=cursor.execute(sql)
