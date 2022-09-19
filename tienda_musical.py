@@ -60,7 +60,8 @@ def alta(artista, album, unidades, valor, tree):
     global mi_id
     item = tree.focus()
     print(item)"""
-def consulta(tree):
+
+def consulta(tree): #probé con esta alternativa que muestra todo el contenido de la base de datos en lugar de un sólo ítem
     seleccion(tree)
 
 
