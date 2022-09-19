@@ -53,7 +53,7 @@ def alta(artista, album, unidades, valor, tree):
         actualizar_treeview(tree)
         seleccion(tree)
     else:
-        print("Error")
+        print("Error en campo Artista")
 
 def actualizar_treeview(mitreeview):
     records = mitreeview.get_children()
