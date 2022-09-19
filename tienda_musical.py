@@ -49,9 +49,26 @@ def alta(artista, album, unidades, valor, tree):
         sql = "INSERT INTO discografica(artista, album, unidades, valor) VALUES(?, ?, ?, ?);"
         cursor.execute(sql, data)
         con.commit()
+        print("Estoy en alta todo ok")
+        actualizar_treeview(tree)
         seleccion(tree)
     else:
         print("Error")
+
+def actualizar_treeview(mitreeview):
+    records = mitreeview.get_children()
+    for element in records:
+        mitreeview.delete(element)
+
+    sql = "SELECT * FROM musica ORDER BY id ASC"
+    con=conexion()
+    cursor=con.cursor()
+    datos=cursor.execute(sql)
+
+    resultado = datos.fetchall()
+    for fila in resultado:
+        print(fila)
+        mitreeview.insert("", 0, text=fila[0], values=(fila[1], fila[2], fila[3]))
 
 
 def consulta():
@@ -74,6 +91,9 @@ def baja(tree):
     sql = "DELETE FROM discografica WHERE id = ?;"
     cursor.execute(sql, data)
     con.commit()
+    print("Item dado de baja")
+    actualizar_treeview(tree)
+    tree.delete(valor)
     tree.delete(valores)
 
 
