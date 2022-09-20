@@ -49,10 +49,12 @@ def alta(artista, album, unidades, valor, tree):
         sql = "INSERT INTO discografica(artista, album, unidades, valor) VALUES(?, ?, ?, ?)"
         cursor.execute(sql, data)
         con.commit()
-        print("Estoy en alta todo ok")
+        print("Item dado de alta")
+        Label(ventana, text="Cadena Valida: "+ var_artista.get(),font=("Verdana",14)).place(x=40,y=50)
         seleccion(tree)
     else:
         print("Error en campo Artista")
+        Label(ventana, text="Cadena Invalida: "+ var_artista.get(),font=("Verdana",14)).place(x=40,y=50)
 
 
 
@@ -116,6 +118,7 @@ def modificar(artista, album, unidades, valor, tree):
     cursor = con.cursor()
     cursor.execute(sql, data)
     con.commit()
+    print("Item modificado")
     seleccion(tree)
 
 
@@ -135,6 +138,7 @@ def funciontxt():
     archivo = open("disqueria.txt", "w")
     archivo.write(datastring)
     archivo.close()
+    print("archivo guardado en archivo: disqueria.txt")
 
 
 #######################
@@ -149,6 +153,7 @@ def funciondiccionario():
         datadiccio.append(x)
         for y in datadiccio:
             print(y)
+    print("archivo guardado en diccionario: datadiccio")
 
 
 ####################
@@ -158,6 +163,8 @@ maintienda = Tk()
 maintienda.config(bg="#494C59")
 maintienda.title("Tienda de música")
 maintienda.resizable(width=300, height=200)
+ventana = Frame(maintienda, bg="#6677E1", height=122, borderwidth=2, relief=RAISED)
+ventana.grid(row=8, column=0, columnspan=4, padx=1, pady=1, sticky=W+E)
 
 
 titulo = Label(
