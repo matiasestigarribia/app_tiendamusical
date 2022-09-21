@@ -50,12 +50,12 @@ def alta(artista, album, unidades, valor, tree):
         cursor.execute(sql, data)
         con.commit()
         print("Item dado de alta")
-        Label(ventana, text="Cadena Valida: "+ var_artista.get(),font=("Verdana",14)).place(x=40,y=50)
+        Label(ventana, text="Ingreso Valido: "+ var_artista.get(),font=("Verdana",14)).place(x=40,y=50)
         seleccion(tree)
         funcion_mensajealta()
     else:
         print("Error en campo Artista")
-        Label(ventana, text="Cadena Invalida: "+ var_artista.get(),font=("Verdana",14)).place(x=40,y=50)
+        Label(ventana, text="Ingreso No Valido: "+ var_artista.get(),font=("Verdana",14)).place(x=40,y=50)
 
 def funcion_mensajealta(): ######## mensaje confirmacion alta
             showinfo("OK", "Item dado de Alta con éxito")
