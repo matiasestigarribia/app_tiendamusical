@@ -58,7 +58,7 @@ def alta(artista, album, unidades, valor, tree):
         Label(ventana, text="Cadena Invalida: "+ var_artista.get(),font=("Verdana",14)).place(x=40,y=50)
 
 def funcion_mensajealta(): ######## mensaje confirmacion alta
-            showinfo("OK", "Item dado de Alta")
+            showinfo("OK", "Item dado de Alta con éxito")
 
 
 """def consulta():
@@ -91,7 +91,7 @@ def baja(tree):
     funcion_mensajebaja()
     
 def funcion_mensajebaja(): ######## mensaje confirmacion baja
-        showinfo("OK", "Item dado de Baja")
+        showinfo("OK", "Item dado de Baja con éxito")
 
 
 def seleccion(mitreview):
@@ -130,7 +130,7 @@ def modificar(artista, album, unidades, valor, tree):
     funcion_modificar()
     
 def funcion_mensajemodificar(): ######## mensaje confirmacion modificacion
-        showinfo("OK", "Item modificado")
+        showinfo("OK", "Item modificado con éxito")
 
 
 #######################
@@ -150,6 +150,10 @@ def funciontxt():
     archivo.write(datastring)
     archivo.close()
     print("archivo guardado en archivo: disqueria.txt")
+    funcion_mensajetxt()
+    
+def funcion_mensajetxt(): ######## mensaje confirmacion txt
+        showinfo("OK", "Base de datos guardada en finaldisqueria.txt")
 
 
 #######################
@@ -165,6 +169,10 @@ def funciondiccionario():
         for y in datadiccio:
             print(y)
     print("archivo guardado en diccionario: datadiccio")
+    funcion_mensajediccionario()
+
+def funcion_mensajediccionario(): ######## mensaje confirmacion diccionario
+        showinfo("OK", "Base de datos guardada en diccionario datadiccio")
 
 
 ####################
