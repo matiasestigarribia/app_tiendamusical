@@ -52,10 +52,13 @@ def alta(artista, album, unidades, valor, tree):
         print("Item dado de alta")
         Label(ventana, text="Cadena Valida: "+ var_artista.get(),font=("Verdana",14)).place(x=40,y=50)
         seleccion(tree)
+        funcion_mensajealta()
     else:
         print("Error en campo Artista")
         Label(ventana, text="Cadena Invalida: "+ var_artista.get(),font=("Verdana",14)).place(x=40,y=50)
 
+def funcion_mensajealta(): ######## mensaje confirmacion alta
+            showinfo("OK", "Item dado de Alta")
 
 
 """def consulta():
@@ -85,6 +88,10 @@ def baja(tree):
     seleccion(tree)
     tree.delete(valor)
     tree.delete(valores)
+    funcion_mensajebaja()
+    
+def funcion_mensajebaja(): ######## mensaje confirmacion baja
+        showinfo("OK", "Item dado de Baja")
 
 
 def seleccion(mitreview):
@@ -120,6 +127,10 @@ def modificar(artista, album, unidades, valor, tree):
     con.commit()
     print("Item modificado")
     seleccion(tree)
+    funcion_modificar()
+    
+def funcion_mensajemodificar(): ######## mensaje confirmacion modificacion
+        showinfo("OK", "Item modificado")
 
 
 #######################
