@@ -60,13 +60,7 @@ def alta(artista, album, unidades, valor, tree):
 def funcion_mensajealta(): ######## mensaje confirmacion alta
             showinfo("OK", "Item dado de Alta con éxito")
 
-
-"""def consulta():
-    global mi_id
-    item = tree.focus()
-    print(item)"""
-
-def consulta(tree): #probé con esta alternativa que muestra todo el contenido de la base de datos en lugar de un sólo ítem
+def consulta(tree): 
     seleccion(tree)
 
 
