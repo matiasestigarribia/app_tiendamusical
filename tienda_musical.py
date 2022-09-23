@@ -134,29 +134,6 @@ def funcion_mensajemodificar(): ######## mensaje confirmacion modificacion
 
 
 #######################
-# GUARDAR EN TXT
-
-
-def funciontxt():
-    datalist = []
-    archivo = open("mibase.db", "r", encoding="unicode_escape")
-    archivo.seek(0)
-    for x in archivo:
-        datalist.append(x)
-        datastring = ""
-        for item in datalist:
-            datastring += item
-    archivo = open("disqueria.txt", "w")
-    archivo.write(datastring)
-    archivo.close()
-    print("archivo guardado en archivo: disqueria.txt")
-    funcion_mensajetxt()
-    
-def funcion_mensajetxt(): ######## mensaje confirmacion txt
-        showinfo("OK", "Base de datos guardada en finaldisqueria.txt")
-
-
-#######################
 # IMPRIMIR DICCIONARIO
 
 
@@ -343,17 +320,6 @@ boton_v = Button(
 )
 boton_v.grid(row=6, column=3)
 
-boton_txt = Button(
-    maintienda,
-    text="Guardar en txt",
-    command=lambda: funciontxt(),
-    borderwidth=2,
-    relief="groove",
-    foreground="white",
-    background="#6666E6",
-)
-boton_txt.grid(row=6, column=4)
-
 boton_dicc = Button(
     maintienda,
     text="Imprimir como diccionario",
@@ -363,6 +329,6 @@ boton_dicc = Button(
     foreground="white",
     background="#6666E6",
 )
-boton_dicc.grid(row=6, column=5)
+boton_dicc.grid(row=6, column=4)
 
 maintienda.mainloop()
