@@ -121,7 +121,7 @@ def modificar(artista, album, unidades, valor, tree):
     con.commit()
     print("Item modificado")
     seleccion(tree)
-    funcion_modificar()
+    funcion_mensajemodificar()
     
 def funcion_mensajemodificar(): ######## mensaje confirmacion modificacion
         showinfo("OK", "Item modificado con éxito")
