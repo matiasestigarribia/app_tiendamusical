@@ -126,26 +126,6 @@ def modificar(artista, album, unidades, valor, tree):
 def funcion_mensajemodificar(): ######## mensaje confirmacion modificacion
         showinfo("OK", "Item modificado con éxito")
 
-
-#######################
-# IMPRIMIR DICCIONARIO
-
-
-def funciondiccionario():
-    datadiccio = []
-    archivo = open("mibase.db", "r", encoding="unicode_escape")
-    archivo.seek(0)
-    for x in archivo:
-        datadiccio.append(x)
-        for y in datadiccio:
-            print(y)
-    print("archivo guardado en diccionario: datadiccio")
-    funcion_mensajediccionario()
-
-def funcion_mensajediccionario(): ######## mensaje confirmacion diccionario
-        showinfo("OK", "Base de datos guardada en diccionario datadiccio")
-
-
 ####################
 # VISTA
 
@@ -313,16 +293,5 @@ boton_v = Button(
     background="#6666E6",
 )
 boton_v.grid(row=6, column=3)
-
-boton_dicc = Button(
-    maintienda,
-    text="Imprimir como diccionario",
-    command=lambda: funciondiccionario(),
-    borderwidth=2,
-    relief="groove",
-    foreground="white",
-    background="#6666E6",
-)
-boton_dicc.grid(row=6, column=4)
 
 maintienda.mainloop()
