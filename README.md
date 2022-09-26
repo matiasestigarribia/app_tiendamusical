@@ -11,7 +11,7 @@ Los editores que pueden utilizarse incluyen –pero no están limitados a- Visua
 Características
 Nuestra aplicación considera 4 campos: artistas, álbumes, unidades y valor. La misma permite funciones CRUD/ABMC: 
 dar de alta y de baja elementos, consultar los valores hasta el momento y permite la modificación de los mismos. Los datos colocados 
-son guardados dentro de una base de datos pero cuenta también con la posibilidad de guardar los valores dentro de un diccionario.
+son guardados dentro de una base de datos.
 
 Contribución
 GitHub: https://github.com/matiasestigarribia/app_tiendamusical/blob/main/tienda_musical.py
